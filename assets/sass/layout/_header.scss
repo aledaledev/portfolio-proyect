@@ -1,0 +1,71 @@
+@use '../sass-utils/variables' as *;
+@use '../sass-utils/mixins' as *;
+@forward 'banner';
+@forward 'about-me';
+@forward 'skills';
+@use 'sass:map';
+
+.header {
+    background: $bg-primary-color;
+    position: relative;
+    box-shadow: 0px 3px 3px -2px rgb(255, 255, 255);
+
+    .header__content {
+        
+        height: 9rem;
+        @include display-flex(column, space-between, center, false);
+
+        .header__logo {
+            width: 90px;
+            filter: invert(1);
+        }
+
+        .header__nav {
+            @include display-flex(row, false, center, 1.5rem);
+
+            .header__link a {
+                @include text(false, uppercase, none, false);
+                @include font($league-spartan, 16px,400, false, rgb(255, 255, 255));
+            }
+        }
+
+        .header__social-media {
+            @include position(absolute, 4%, 4%, false, false);
+            @include box-size(max-content, max-content);
+
+            a {
+                display: inline-block;
+            }
+
+            .logo {
+                width: 30px;
+            }
+
+        }
+
+        @include media-query(map.get($dtp-width, 'medium')) {
+            flex-direction: row;
+            justify-content: space-between;
+            height: 6rem;
+
+            .header__logo {
+                width: 100px;
+            }
+
+            .header__nav {
+                gap: 2rem;
+            }
+
+            .header__social-media {
+                display: flex;
+                justify-content: space-between;
+                position: static;
+                width: 100px;
+                .logo {
+                    width: 20px;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}

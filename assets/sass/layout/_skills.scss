@@ -1,0 +1,81 @@
+@use 'sass:map';
+@use '../sass-utils/variables' as *;
+@use '../sass-utils/mixins' as *;
+@use 'about-me' as *;
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.relative {
+    position: relative;
+}
+
+.replicating {
+    display: inline-block;
+    background-size: cover;
+    @include box-size(100px,100px);
+    filter: invert(1);
+}
+
+.transition-card {
+    transition: all .4s ease;
+}
+
+.translate-up{
+    transform: translateY(-25px);
+}
+
+.translate-down{
+    transform: translateY(25px);
+}
+.box-shadow{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.box-shadow-hidden{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.skills__content {
+    text-align: center;
+
+    .skills__title {
+        @extend .title;
+        margin-bottom: 1.5rem;
+    }
+
+    .skills__hard-skills {
+        max-width: 768px;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template: repeat(3, 10rem)/repeat(2, 1fr);
+        gap: 1.5rem;
+
+        .skills__card--face-1 {
+            position: absolute; 
+            z-index: 2;
+            @extend .flex;
+            @extend .transition-card;
+            @include box-size(100%,100%);
+        }
+
+        .skills__card--face-2 {
+            @include font($league-spartan,20px,false,false,#000);
+            z-index: 1;
+            @extend .flex;
+            @extend .transition-card;
+            @extend .box-shadow-hidden;
+            @include position(relative,calc(100% - 50px),false,false,false);
+            @include box-size(100%,50px); 
+        }
+
+        @include each-skills;
+
+        @include media-query(map.get($dtp-width,'medium')){
+            grid-template: repeat(2, 10rem)/repeat(3, 1fr);
+            gap: 3rem;
+        }
+    }
+}

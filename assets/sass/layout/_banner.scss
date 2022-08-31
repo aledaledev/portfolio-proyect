@@ -1,0 +1,63 @@
+@use 'sass:map';
+@use '../sass-utils/variables' as *;
+@use '../sass-utils/mixins' as *;
+
+.banner {
+    background: $bg-secundary-color;
+    display: flex;
+    justify-content: center;
+}
+
+.banner__content {
+    border-radius: 40px;
+    max-width: 768px;
+    @include display-flex(column, space-around, center, 3rem);
+    .banner__presentation {
+        @include display-flex(column, false, center, 2rem);
+
+        .banner__title {
+            margin: 0;
+            @include font($league-spartan, 56px, 700, false, #cefafd);
+            @include text(center, false, false, 1.2);
+
+            .small {
+                display: block;
+                font-size: 38px;
+            }
+
+            .underline {
+                text-decoration: underline;
+            }
+        }
+
+        .banner__description {
+            max-width: 400px;
+            @include font($league-spartan, 26px, 700, false, #e2f7ef);
+            @include text(center, false, false, 1.5);
+        }
+    }
+
+    .banner__image {
+        width: 300px;
+        border-radius: 100%;
+        background: linear-gradient(90deg, #24C6DC 0%,#514A9D 100%);
+        box-shadow: 0px 0px 5px 1px rgb(255, 255, 255);
+    }
+
+    @include media-query(map.get($dtp-width, 'medium')) {
+        height: 40rem;
+        flex-direction: row;
+        align-items: center;
+
+        .banner__presentation {
+            align-items: flex-start;
+            .banner__title,
+            .banner__description {
+                text-align: left;
+            }
+        }
+        .banner__image {
+            width: 300px;
+        }
+    }
+}

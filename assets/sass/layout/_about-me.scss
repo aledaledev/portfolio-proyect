@@ -1,0 +1,27 @@
+@use '../sass-utils/variables' as *;
+@use '../sass-utils/mixins' as *;
+
+
+.about{
+    position: relative;
+    box-shadow: 0px -1px 3px 1px rgb(255, 255, 255);
+    background:$bg-terceary-color;
+}
+.title{
+    @include font($league-spartan,48px,700,false,rgb(238, 255, 252));
+}
+.about__content {
+    height: auto;
+    margin: 7rem 0;
+    @include display-flex(column, false, center, 1.5rem);
+
+    .about__title {
+        @extend .title;
+    }
+
+    .about__text {
+        max-width: 768px;
+        @include font($league-spartan, 22px, false, false, rgb(248, 254, 255));
+        @include text(justify, false, false, 1.3);
+    }
+}

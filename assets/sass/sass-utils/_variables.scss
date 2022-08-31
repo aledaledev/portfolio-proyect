@@ -1,0 +1,16 @@
+@use 'sass:map';
+@use 'sass:list';
+@forward '../base/reset';
+@forward '../base/normalize';
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;400;700&family=Roboto+Slab:wght@100;400;700&display=swap');
+
+$bg-primary-color: linear-gradient(180deg, rgba(29,105,224,1) 0%, rgba(0,212,255,1) 100%);
+$bg-secundary-color: linear-gradient(180deg, rgba(0,212,255,1) 0%,rgb(144, 240, 211) 86%);
+$bg-terceary-color: linear-gradient(180deg, rgb(144, 240, 211)0%,rgb(29, 255, 123) 86%);
+
+$league-spartan:'League Spartan';
+$roboto-slab:'Roboto Slab';
+
+$dtp-width:("medium": 768px, "large": 1024px);
+
+$skills:('html':#e45f4a,'css':#17a2da,'javascript':#ffff00,'git':#d64400,'sass':#ca13ca);
